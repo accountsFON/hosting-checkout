@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website Hosting & Support — Five One Nine Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F1F1F0;
+    --bg-soft: #F7F6F4;
+    --pale-blue: #D3E1E6;
+    --pale-blue-soft: #E1EBEE;
+    --dusty-blue: #A0C2CC;
+    --dusty-blue-deep: #7FA9B6;
+    --dusty-blue-darkest: #4F7A88;
+    --coral: #E87457;
+    --coral-dark: #D65A3D;
+    --charcoal: #2C3C45;
+    --charcoal-soft: #4E5E67;
+    --charcoal-ghost: rgba(44, 60, 69, 0.55);
+    --line: rgba(44, 60, 69, 0.12);
+    --white: #FFFFFF;
+    --card-shadow: 0 1px 3px rgba(44, 60, 69, 0.06), 0 8px 24px rgba(44, 60, 69, 0.08);
+    --card-shadow-pop: 0 2px 8px rgba(44, 60, 69, 0.08), 0 16px 40px rgba(44, 60, 69, 0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== Logo ===== */
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--charcoal);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-mark svg {
+    width: 18px;
+    height: 18px;
+  }
+  .logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+  }
+
+  /* ===== Header ===== */
+  .header {
+    text-align: center;
+    padding: 48px 20px 20px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .header h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--dusty-blue-darkest);
+  }
+  .header p {
+    font-size: 17px;
+    color: var(--charcoal-soft);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ===== Toggle ===== */
+  .toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 40px auto 0;
+  }
+  .toggle-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal-ghost);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .toggle-label.active {
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+  .toggle-track {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    background: var(--pale-blue);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .toggle-track.annual {
+    background: var(--coral);
+  }
+  .toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: var(--white);
+    border-radius: 50%;
+    transition: transform 0.25s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  .toggle-track.annual .toggle-thumb {
+    transform: translateX(24px);
+  }
+  .save-badge {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--coral);
+    background: rgba(232, 116, 87, 0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== Pricing Grid (mobile-first) ===== */
+  .pricing {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 420px;
+    margin: 40px auto 0;
+    padding: 0 20px 60px;
+    align-items: start;
+  }
+
+  /* ===== Card ===== */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px 32px 36px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-pop);
+  }
+  .card.featured {
+    border-color: var(--coral);
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-pop);
+  }
+  .card.featured:hover {
+    transform: translateY(-12px);
+  }
+
+  .badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--coral);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .tier-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  .tier-tagline {
+    font-size: 14px;
+    color: var(--charcoal-ghost);
+    margin-bottom: 24px;
+  }
+
+  .price-block {
+    margin-bottom: 8px;
+    min-height: 62px;
+  }
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .price .dollar {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--charcoal-soft);
+    align-self: flex-start;
+    margin-top: 6px;
+  }
+  .price .amount {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--charcoal);
+    transition: opacity 0.15s;
+  }
+  .price .period {
+    font-size: 15px;
+    color: var(--charcoal-ghost);
+    font-weight: 500;
+  }
+  .price-monthly-equiv {
+    font-size: 13px;
+    color: var(--dusty-blue-darkest);
+    font-weight: 500;
+    margin-top: 2px;
+    display: none;
+  }
+  .price-monthly-equiv .strike {
+    text-decoration: line-through;
+    color: var(--charcoal-ghost);
+    font-weight: 400;
+  }
+
+  .price-note {
+    font-size: 13px;
+    color: var(--charcoal-ghost);
+    margin-bottom: 28px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin-bottom: 24px;
+  }
+
+  .features-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dusty-blue-darkest);
+    margin-bottom: 14px;
+  }
+
+  .features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .features li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 15px;
+    color: var(--charcoal-soft);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--pale-blue-soft);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234F7A88' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
+  }
+  .card.featured .features li::before {
+    background-color: rgba(232, 116, 87, 0.12);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D65A3D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+  .features li strong {
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+
+  /* ===== CTA Button ===== */
+  .cta {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 2px solid var(--line);
+  }
+  .cta-outline:hover {
+    border-color: var(--dusty-blue-deep);
+    color: var(--dusty-blue-darkest);
+    background: var(--pale-blue-soft);
+  }
+  .cta-primary {
+    background: var(--coral);
+    color: var(--white);
+    border: 2px solid var(--coral);
+  }
+  .cta-primary:hover {
+    background: var(--coral-dark);
+    border-color: var(--coral-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(232, 116, 87, 0.3);
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    padding: 0 24px 60px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .footer p {
+    font-size: 15px;
+    color: var(--charcoal-ghost);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .footer a {
+    color: var(--coral);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== Trust bar ===== */
+  .trust {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 680px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--charcoal-soft);
+    font-weight: 500;
+  }
+  .trust-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ===== Desktop ===== */
+  @media (min-width: 860px) {
+    .header {
+      padding-top: 64px;
+    }
+    .pricing {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1080px;
+      padding: 0 24px 80px;
+      margin-top: 48px;
+    }
+    .card.featured {
+      transform: translateY(-8px);
+    }
+    .card.featured:hover {
+      transform: translateY(-12px);
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 50 50" fill="none"><path d="M 23 9 L 23 23 L 9 23 L 9 27 L 23 27 L 23 41 L 27 41 L 27 27 L 41 27 L 41 23 L 27 23 L 27 9 Z" fill="white"/></svg>
+      </div>
+      <span class="logo-text">Five One Nine</span>
+    </div>
+    <h1>Website hosting that <em>actually</em> includes support</h1>
+    <p>Your site stays fast, secure, and up to date. Every plan includes hosting, critical support, and dedicated hours each month for updates and changes. No tickets. No runaround. Just reach out.</p>
+
+    <!-- Trust bar -->
+    <div class="trust">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Secure & monitored
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Cancel anytime
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Real human support
+      </div>
+    </div>
+
+    <!-- Billing toggle -->
+    <div class="toggle-wrap">
+      <span class="toggle-label active" id="label-monthly">Monthly</span>
+      <div class="toggle-track" id="toggle" onclick="toggleBilling()">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="toggle-label" id="label-annual">Annual</span>
+      <span class="save-badge">Save 10%</span>
+    </div>
+  </div>
+
+  <!-- Pricing Cards -->
+  <div class="pricing">
+
+    <!-- Essential -->
+    <div class="card" data-monthly-amount="65" data-annual-amount="702"
+         data-monthly-link="https://buy.stripe.com/4gMeVebVi8mo0Fx3GWgQE07"
+         data-annual-link="https://buy.stripe.com/fZufZi2kIbyAdsjgtIgQE0a"
+         data-monthly-price="65" data-annual-equiv="58.50">
+      <div class="tier-name">Essential</div>
+      <div class="tier-tagline">Reliable hosting with a safety net</div>
+      <div class="price-block">
+        <div class="price">
+          <span class="dollar">$</span>
+          <span class="amount" id="price-essential">65</span>
+          <span class="period" id="period-essential">/mo</span>
+        </div>
+        <div class="price-monthly-equiv" id="equiv-essential"><span class="strike">$65/mo</span> &rarr; $58.50/mo</div>
+      </div>
+      <div class="price-note" id="note-essential">Billed monthly. No contracts.</div>
+      <div class="divider"></div>
+      <div class="features-label">What's included</div>
+      <ul class="features">
+        <li><strong>Website hosting</strong> on fast, reliable servers</li>
+        <li><strong>Critical support</strong> for downtime, security issues, and broken functionality</li>
+        <li><strong>Up to 1 hour</strong> of support time each month for minor updates, text changes, and small requests</li>
+        <li>SSL certificate and security monitoring</li>
+        <li>Regular backups</li>
+      </ul>
+      <a href="https://buy.stripe.com/4gMeVebVi8mo0Fx3GWgQE07" class="cta cta-outline" id="cta-essential">Get Started</a>
+    </div>
+
+    <!-- Enhanced (Featured) -->
+    <div class="card featured" data-monthly-amount="85" data-annual-amount="918"
+         data-monthly-link="https://buy.stripe.com/fZu7sMcZmauw87Z6T8gQE08"
+         data-annual-link="https://buy.stripe.com/14A00kaReeKM5ZRgtIgQE0b"
+         data-monthly-price="85" data-annual-equiv="76.50">
+      <div class="badge">Most Popular</div>
+      <div class="tier-name">Enhanced</div>
+      <div class="tier-tagline">Faster speeds, more support time</div>
+      <div class="price-block">
+        <div class="price">
+          <span class="dollar">$</span>
+          <span class="amount" id="price-enhanced">85</span>
+          <span class="period" id="period-enhanced">/mo</span>
+        </div>
+        <div class="price-monthly-equiv" id="equiv-enhanced"><span class="strike">$85/mo</span> &rarr; $76.50/mo</div>
+      </div>
+      <div class="price-note" id="note-enhanced">Billed monthly. No contracts.</div>
+      <div class="divider"></div>
+      <div class="features-label">What's included</div>
+      <ul class="features">
+        <li><strong>Everything in Essential,</strong> plus:</li>
+        <li><strong>Faster hosting</strong> powered by Cloudflare DNS for quicker load times</li>
+        <li><strong>Up to 2 hours</strong> of support time each month for updates, edits, and requests</li>
+        <li>Performance optimization and caching</li>
+        <li>Priority response times</li>
+      </ul>
+      <a href="https://buy.stripe.com/fZu7sMcZmauw87Z6T8gQE08" class="cta cta-primary" id="cta-enhanced">Get Started</a>
+    </div>
+
+    <!-- Elite -->
+    <div class="card" data-monthly-amount="125" data-annual-amount="1350"
+         data-monthly-link="https://buy.stripe.com/eVq3cwgby0TWdsj91ggQE09"
+         data-annual-link="https://buy.stripe.com/5kQbJ22kI324ewn0uKgQE0c"
+         data-monthly-price="125" data-annual-equiv="112.50">
+      <div class="tier-name">Elite</div>
+      <div class="tier-tagline">The full package, hands-off peace of mind</div>
+      <div class="price-block">
+        <div class="price">
+          <span class="dollar">$</span>
+          <span class="amount" id="price-elite">125</span>
+          <span class="period" id="period-elite">/mo</span>
+        </div>
+        <div class="price-monthly-equiv" id="equiv-elite"><span class="strike">$125/mo</span> &rarr; $112.50/mo</div>
+      </div>
+      <div class="price-note" id="note-elite">Billed monthly. No contracts.</div>
+      <div class="divider"></div>
+      <div class="features-label">What's included</div>
+      <ul class="features">
+        <li><strong>Everything in Enhanced,</strong> plus:</li>
+        <li><strong>Fastest hosting</strong> with Cloudflare advanced features and edge caching</li>
+        <li><strong>Up to 3 hours</strong> of support time each month for updates, content changes, and improvements</li>
+        <li><strong>Regular site check-ins</strong> to catch issues before they become problems</li>
+        <li>Proactive performance and security reviews</li>
+      </ul>
+      <a href="https://buy.stripe.com/eVq3cwgby0TWdsj91ggQE09" class="cta cta-outline" id="cta-elite">Get Started</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Support hours do not roll over month to month. Need something bigger? We're happy to scope it out separately.</p>
+    <p>Questions? <a href="mailto:caleb@fonmarketing.com">Reach out anytime.</a></p>
+  </div>
+
+  <script>
+    var isAnnual = false;
+
+    var tiers = [
+      {
+        id: 'essential',
+        monthlyAmount: '65',
+        annualAmount: '702',
+        monthlyEquiv: '58.50',
+        monthlyLink: 'https://buy.stripe.com/4gMeVebVi8mo0Fx3GWgQE07',
+        annualLink: 'https://buy.stripe.com/fZufZi2kIbyAdsjgtIgQE0a'
+      },
+      {
+        id: 'enhanced',
+        monthlyAmount: '85',
+        annualAmount: '918',
+        monthlyEquiv: '76.50',
+        monthlyLink: 'https://buy.stripe.com/fZu7sMcZmauw87Z6T8gQE08',
+        annualLink: 'https://buy.stripe.com/14A00kaReeKM5ZRgtIgQE0b'
+      },
+      {
+        id: 'elite',
+        monthlyAmount: '125',
+        annualAmount: '1,350',
+        monthlyEquiv: '112.50',
+        monthlyLink: 'https://buy.stripe.com/eVq3cwgby0TWdsj91ggQE09',
+        annualLink: 'https://buy.stripe.com/5kQbJ22kI324ewn0uKgQE0c'
+      }
+    ];
+
+    function toggleBilling() {
+      isAnnual = !isAnnual;
+      var track = document.getElementById('toggle');
+      var labelMonthly = document.getElementById('label-monthly');
+      var labelAnnual = document.getElementById('label-annual');
+
+      if (isAnnual) {
+        track.classList.add('annual');
+        labelMonthly.classList.remove('active');
+        labelAnnual.classList.add('active');
+      } else {
+        track.classList.remove('annual');
+        labelMonthly.classList.add('active');
+        labelAnnual.classList.remove('active');
+      }
+
+      tiers.forEach(function(tier) {
+        var priceEl = document.getElementById('price-' + tier.id);
+        var periodEl = document.getElementById('period-' + tier.id);
+        var noteEl = document.getElementById('note-' + tier.id);
+        var equivEl = document.getElementById('equiv-' + tier.id);
+        var ctaEl = document.getElementById('cta-' + tier.id);
+
+        if (isAnnual) {
+          priceEl.textContent = tier.annualAmount;
+          periodEl.textContent = '/yr';
+          noteEl.textContent = 'Billed annually. Save 10%.';
+          equivEl.style.display = 'block';
+          ctaEl.href = tier.annualLink;
+        } else {
+          priceEl.textContent = tier.monthlyAmount;
+          periodEl.textContent = '/mo';
+          noteEl.textContent = 'Billed monthly. No contracts.';
+          equivEl.style.display = 'none';
+          ctaEl.href = tier.monthlyLink;
+        }
+      });
+    }
+
+    document.getElementById('label-monthly').addEventListener('click', function() {
+      if (isAnnual) toggleBilling();
+    });
+    document.getElementById('label-annual').addEventListener('click', function() {
+      if (!isAnnual) toggleBilling();
+    });
+  </script>
+
+</body>
+</html>
