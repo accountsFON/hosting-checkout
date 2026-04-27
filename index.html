@@ -40,32 +40,18 @@
 
   /* ===== Logo ===== */
   .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 24px;
+    display: block;
+    text-align: center;
+    margin-bottom: 28px;
   }
-  .logo-mark {
-    width: 32px;
-    height: 32px;
-    background: var(--charcoal);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .logo img {
+    height: 56px;
+    width: auto;
   }
-  .logo-mark svg {
-    width: 18px;
-    height: 18px;
-  }
-  .logo-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--charcoal);
+  @media (min-width: 860px) {
+    .logo img {
+      height: 68px;
+    }
   }
 
   /* ===== Header ===== */
@@ -419,10 +405,7 @@
   <!-- Header -->
   <div class="header">
     <div class="logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 50 50" fill="none"><path d="M 23 9 L 23 23 L 9 23 L 9 27 L 23 27 L 23 41 L 27 41 L 27 27 L 41 27 L 41 23 L 27 23 L 27 9 Z" fill="white"/></svg>
-      </div>
-      <span class="logo-text">Five One Nine</span>
+      <img src="logo.png" alt="Five One Nine Digital Marketing" />
     </div>
     <h1>Website hosting that <em>actually</em> includes support</h1>
     <p>Your site stays fast, secure, and up to date. Every plan includes hosting, critical support, and dedicated hours each month for updates and changes. No tickets. No runaround. Just reach out.</p>
